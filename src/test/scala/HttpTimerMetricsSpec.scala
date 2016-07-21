@@ -1,5 +1,5 @@
 package backline.http.metrics
-import akka.http.scaladsl.server.Directives
+import akka.http.scaladsl.server.{Directives, Route}
 import akka.http.scaladsl.model.StatusCodes
 import com.codahale.metrics.MetricRegistry
 import java.util.concurrent.atomic.AtomicBoolean
@@ -56,7 +56,7 @@ object HttpTimerMetricsSpec extends RouteSpecification with HttpTimerMetrics wit
     passed.get must beTrue
   }
 
-  def routes =
+  def routes: Route =
     timerDirective {
       (get & path("ping")) {
         complete("pong")
