@@ -1,4 +1,5 @@
 package backline.http.metrics
+
 import com.codahale.metrics._
 import java.util.Iterator
 import akka.actor.Status.Failure
@@ -9,9 +10,13 @@ import scala.util.control.NonFatal
 trait MetricsBase extends BasicDirectives {
   def metricRegistry: MetricRegistry
 
-  protected def findAndRegisterTimer(name: String): Timer = {
+  protected def findAndRegisterTimer(name: String, customReservoir: Option[Reservoir]): Timer = {
     val found = metricRegistry.getTimers(new NameBasedMetricFilter(name)).values.iterator
-    findAndRegisterMetric(name, new Timer(), found)
+
+    customReservoir match {
+      case Some(reservoir) => findAndRegisterMetric(name, new Timer(reservoir), found)
+      case None => findAndRegisterMetric(name, new Timer(), found)
+    }
   }
 
   protected def findAndRegisterCounter(name: String): Counter = {
@@ -46,4 +51,5 @@ trait MetricsBase extends BasicDirectives {
   protected class NameBasedMetricFilter(needle: String) extends MetricFilter {
     def matches(name: String, metric: Metric): Boolean = name equalsIgnoreCase needle
   }
+
 }
