@@ -8,7 +8,7 @@ version := "0.3.0"
 
 scalaVersion := "2.11.8"
 
-val akkaVersion = "2.4.8"
+val akkaVersion = "10.0.0"
 
 resolvers ++= Seq(
   "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
@@ -16,9 +16,11 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "io.dropwizard.metrics" % "metrics-core" % "3.1.2",
-  "com.typesafe.akka" %% "akka-http-experimental" % akkaVersion,
   "com.typesafe.akka" %% "akka-http-core" % akkaVersion,
-  "com.typesafe.akka" %% "akka-stream" % akkaVersion
+  "com.typesafe.akka" %% "akka-http" % akkaVersion,
+  // Tests
+  "org.specs2" %% "specs2-core" % "3.7" % "test",
+  "com.typesafe.akka" %% "akka-http-testkit" % akkaVersion % "test"
 )
 
 resolvers ++= Seq(
@@ -26,11 +28,6 @@ resolvers ++= Seq(
 )
 
 scalacOptions in Test ++= Seq("-Yrangepos")
-
-libraryDependencies ++= Seq(
-  "org.specs2" %% "specs2-core" % "3.7" % "test",
-  "com.typesafe.akka" %% "akka-http-testkit" % akkaVersion % "test"
-)
 
 bintrayOrganization in bintray := Some("backline")
 
