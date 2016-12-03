@@ -6,8 +6,8 @@
 
 Current versions:
 
-- `akka-http-*`: `10.0.0`
-- `metrics-core`: `3.1.2`
+- `akka-http-*`: `10.0.0` - [Project](https://github.com/akka/akka-http)
+- `metrics-core`: `3.1.2` - [Project](https://github.com/dropwizard/metrics)
 
 ## Install & Usage
 
