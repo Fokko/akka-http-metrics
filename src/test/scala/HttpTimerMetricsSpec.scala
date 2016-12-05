@@ -20,6 +20,17 @@ object HttpTimerMetricsSpec extends RouteSpecification with HttpTimerMetrics wit
     counts.getCount() must be_==(1000).eventually
   }
 
+  "work with custom names" in {
+    (1 to 1000) foreach { _ =>
+      Get("/ping3") ~> routes ~> check {
+        status === StatusCodes.OK
+        responseAs[String].contains("pong3") must beTrue
+      }
+    }
+    val counts = metricRegistry.timer("other-ping")
+    counts.getCount() must be_==(1000).eventually
+  }
+
   "the slow route should take over a second" in {
     (1 to 5) foreach { _ =>
       Get("/slow") ~> routes ~> check {
@@ -67,6 +78,11 @@ object HttpTimerMetricsSpec extends RouteSpecification with HttpTimerMetrics wit
       (get & path("slow")) {
         Thread.sleep(1000)
         complete("awake")
+      }
+    } ~
+    timerDirectiveWithName("other-ping") {
+      (get & path("ping3")) {
+        complete("pong3")
       }
     }
 }
