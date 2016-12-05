@@ -24,7 +24,7 @@ libraryDependencies ++= Seq(
 import akka.http.scaladsl.server.Directives
 import backline.http.metrics.HttpTimerMetrics
 
-trait MyRoute extends Directives {
+trait MyRoute extends Directives with HttpTimerMetrics {
   def myRoute = {
     timerDirective {
       (get & path("ping")) {
