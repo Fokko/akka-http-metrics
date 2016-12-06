@@ -14,7 +14,7 @@ Current versions:
 ```scala
 resolvers += "bintray-backline-open-source-releases" at "https://dl.bintray.com/backline/open-source"
 libraryDependencies ++= Seq(
-  "backline" %% "akka-http-metrics" % "0.4.0"
+  "backline" %% "akka-http-metrics" % "0.4.1"
 )
 ```
 

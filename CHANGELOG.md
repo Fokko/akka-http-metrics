@@ -1,4 +1,4 @@
-# 0.4.1 (Unreleased)
+# 0.4.1 (Released 2016-12-06)
 
 - Adding support for custom names in meter, timer, and response code metrics.
 
