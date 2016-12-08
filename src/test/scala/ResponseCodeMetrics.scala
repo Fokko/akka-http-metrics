@@ -14,7 +14,7 @@ object ResponseCodeMetricsSpec extends RouteSpecification with ResponseCodeMetri
       }
     }
     val counts = metricRegistry.counter("ok.GET-2xx")
-    counts.getCount() must be_==(1000)
+    counts.getCount() must be_==(1000).eventually
   }
 
   "count up for successful requests with custom name" in {
@@ -24,7 +24,7 @@ object ResponseCodeMetricsSpec extends RouteSpecification with ResponseCodeMetri
       }
     }
     val counts = metricRegistry.counter("other-name-2xx")
-    counts.getCount() must be_==(1000)
+    counts.getCount() must be_==(1000).eventually
   }
 
   "count up for redirecting requests" in {
@@ -34,7 +34,7 @@ object ResponseCodeMetricsSpec extends RouteSpecification with ResponseCodeMetri
       }
     }
     val counts = metricRegistry.counter("redirect.GET-3xx")
-    counts.getCount() must be_==(1000)
+    counts.getCount() must be_==(1000).eventually
   }
 
   "count up for redirecting requests with custom name" in {
@@ -44,7 +44,7 @@ object ResponseCodeMetricsSpec extends RouteSpecification with ResponseCodeMetri
       }
     }
     val counts = metricRegistry.counter("other-name-3xx")
-    counts.getCount() must be_==(1000)
+    counts.getCount() must be_==(1000).eventually
   }
 
   "count up for bad requests" in {
@@ -54,7 +54,7 @@ object ResponseCodeMetricsSpec extends RouteSpecification with ResponseCodeMetri
       }
     }
     val counts = metricRegistry.counter("bad.GET-4xx")
-    counts.getCount() must be_==(1000)
+    counts.getCount() must be_==(1000).eventually
   }
 
   "count up for bad requests with custom name" in {
@@ -64,7 +64,7 @@ object ResponseCodeMetricsSpec extends RouteSpecification with ResponseCodeMetri
       }
     }
     val counts = metricRegistry.counter("other-name-4xx")
-    counts.getCount() must be_==(1000)
+    counts.getCount() must be_==(1000).eventually
   }
 
   "count up for failing requests" in {
@@ -74,7 +74,7 @@ object ResponseCodeMetricsSpec extends RouteSpecification with ResponseCodeMetri
       }
     }
     val counts = metricRegistry.counter("fail.GET-5xx")
-    counts.getCount() must be_==(1000)
+    counts.getCount() must be_==(1000).eventually
   }
 
   "count up for failing requests with custom name" in {
@@ -84,7 +84,7 @@ object ResponseCodeMetricsSpec extends RouteSpecification with ResponseCodeMetri
       }
     }
     val counts = metricRegistry.counter("other-name-5xx")
-    counts.getCount() must be_==(1000)
+    counts.getCount() must be_==(1000).eventually
   }
 
   def routes =
