@@ -4,7 +4,7 @@ name := "akka-http-metrics"
 
 organization := "backline"
 
-version := "0.4.3"
+version := "0.4.4-dev"
 
 scalaVersion := "2.11.8"
 
