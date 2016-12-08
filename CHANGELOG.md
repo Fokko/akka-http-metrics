@@ -1,3 +1,7 @@
+# 0.4.3 (Unreleased)
+
+- Cross compile to support Scala 2.11 and 2.12
+
 # 0.4.2 (Released 2016-12-08)
 
 - Fix timing for routes that have Futures

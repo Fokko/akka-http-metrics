@@ -8,6 +8,8 @@ version := "0.4.3-dev"
 
 scalaVersion := "2.11.8"
 
+crossScalaVersions := Seq(scalaVersion.value, "2.12.1")
+
 val akkaVersion = "10.0.0"
 
 resolvers ++= Seq(
@@ -19,7 +21,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-core" % akkaVersion,
   "com.typesafe.akka" %% "akka-http" % akkaVersion,
   // Tests
-  "org.specs2" %% "specs2-core" % "3.7" % "test",
+  "org.specs2" %% "specs2-core" % "3.8.6" % "test",
   "com.typesafe.akka" %% "akka-http-testkit" % akkaVersion % "test"
 )
 
