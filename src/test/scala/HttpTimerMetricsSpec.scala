@@ -85,13 +85,8 @@ object HttpTimerMetricsSpec extends RouteSpecification with HttpTimerMetrics wit
     }
 
     val counts = metricRegistry.timer("ping-fut.GET")
-
-    // The default durationFactor from codahale metrics is:
-    //  1.0 / TimeUnit.SECONDS.toNanos(1)
-    val durationFactor: Double = 1.0D / TimeUnit.SECONDS.toNanos(1)
-
-    def mean: Double = counts.getSnapshot().getMean() * durationFactor
-    mean must be_>=(0.09).eventually // > 90ms
+    counts.getCount() must be_==(100).eventually
+    (counts.getSnapshot.getMean() / 1000000) must be_>(0.1) // 0.1s
   }
 
   def routes =
