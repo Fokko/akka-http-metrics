@@ -8,6 +8,8 @@ version := "0.4.3-dev"
 
 scalaVersion := "2.11.8"
 
+crossScalaVersions := Seq(scalaVersion.value, "2.12.1")
+
 val akkaVersion = "10.0.0"
 
 resolvers ++= Seq(
