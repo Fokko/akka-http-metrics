@@ -1,4 +1,4 @@
-# 0.4.3 (Unreleased)
+# 0.4.3 (Released 2016-12-08)
 
 - Cross compile to support Scala 2.11 and 2.12
 
