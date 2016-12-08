@@ -1,15 +1,15 @@
-# 0.4.3 (Released 2016-12-08)
+### 0.4.3 (Released 2016-12-08)
 
 - Cross compile to support Scala 2.11 and 2.12
 
-# 0.4.2 (Released 2016-12-08)
+### 0.4.2 (Released 2016-12-08)
 
 - Fix timing for routes that have Futures
 
-# 0.4.1 (Released 2016-12-06)
+### 0.4.1 (Released 2016-12-06)
 
 - Adding support for custom names in meter, timer, and response code metrics.
 
-# 0.4.0 (Released 2016-12-02)
+### 0.4.0 (Released 2016-12-02)
 
 - Bump akka-http version to `10.0.0`
