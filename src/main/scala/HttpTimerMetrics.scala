@@ -11,15 +11,11 @@ trait HttpTimerMetrics extends MetricsBase {
     timer(_ => name)
 
   private[this] def timer(nameFunc: RequestContext => String): Directive0 = {
-    mapInnerRoute { inner => ctx =>
+    extractRequestContext.flatMap { ctx ⇒
       val timer = findAndRegisterTimer(nameFunc(ctx)).time()
-      try {
-        inner(ctx)
-      } catch {
-        case NonFatal(err) =>
-          ctx.fail(err)
-      } finally {
+      mapRouteResult { result ⇒
         timer.stop()
+        result
       }
     }
   }

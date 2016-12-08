@@ -2,7 +2,9 @@ package backline.http.metrics
 import akka.http.scaladsl.server.Directives
 import akka.http.scaladsl.model.StatusCodes
 import com.codahale.metrics.MetricRegistry
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
+import scala.concurrent.Future
 
 object HttpTimerMetricsSpec extends RouteSpecification with HttpTimerMetrics with Directives {
   sequential
@@ -65,6 +67,31 @@ object HttpTimerMetricsSpec extends RouteSpecification with HttpTimerMetrics wit
     val counts = metricRegistry.timer("ping2.GET")
     counts.getCount() must be_==(1000).eventually
     passed.get must beTrue
+  }
+
+  "record timings properly when routes are completed with futures" in {
+    def finish: Future[String] = Future { Thread.sleep(100); "ok" }
+    def route = timerDirective {
+      (get & path("ping-fut")) {
+        complete(finish)
+      }
+    }
+
+    (1 to 100) foreach { _ =>
+      Get("/ping-fut") ~> route ~> check {
+        status === StatusCodes.OK
+        responseAs[String].contains("ok") must beTrue
+      }
+    }
+
+    val counts = metricRegistry.timer("ping-fut.GET")
+
+    // The default durationFactor from codahale metrics is:
+    //  1.0 / TimeUnit.SECONDS.toNanos(1)
+    val durationFactor: Double = 1.0D / TimeUnit.SECONDS.toNanos(1)
+
+    def mean: Double = counts.getSnapshot().getMean() * durationFactor
+    mean must be_>=(0.09).eventually // > 90ms
   }
 
   def routes =
