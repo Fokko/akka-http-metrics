@@ -1,7 +1,5 @@
 # akka-http-metrics
 
-![](https://api.travis-ci.org/Backline/akka-http-metrics.svg)
-
 > A metrics wrapper around akka-http routes and directives.
 
 Current versions:
