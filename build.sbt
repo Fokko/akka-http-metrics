@@ -10,7 +10,7 @@ scalaVersion := "2.11.8"
 
 crossScalaVersions := Seq(scalaVersion.value, "2.12.1")
 
-val akkaVersion = "10.0.0"
+val akkaVersion = "10.0.3"
 
 resolvers ++= Seq(
   "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
