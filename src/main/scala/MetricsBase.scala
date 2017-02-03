@@ -1,5 +1,5 @@
 package backline.http.metrics
-import com.codahale.metrics._
+import com.codahale.metrics.{Counter, Metric, Meter, MetricFilter, MetricRegistry, Timer}
 import java.util.Iterator
 import akka.actor.Status.Failure
 import akka.http.scaladsl.server.{Directive0, RequestContext}

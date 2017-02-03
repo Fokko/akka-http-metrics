@@ -1,3 +1,9 @@
+### 0.5.0 (Unreleased)
+
+CHANGEs
+
+`ResponseCodeMetrics` has been deprecated. A replacement of `StatusCodeMetrics` is recommended. This new interface does not require an `ExecutionContext` to be implicitly available. Thanks to [@notxcain](https://github.com/notxcain)
+
 ### 0.4.4 (Released 2017-02-03)
 
 - Bump akka-http to `10.0.3`
