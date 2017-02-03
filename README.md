@@ -4,17 +4,17 @@
 
 Current versions:
 
-- `akka-http-*`: `10.0.0` - [Project](https://github.com/akka/akka-http)
+- `akka-http-*`: `10.0.3` - [Project](https://github.com/akka/akka-http)
 - `metrics-core`: `3.1.2` - [Project](https://github.com/dropwizard/metrics)
 
-Scala 2.11 and 2.12 are supported as of version `0.4.3`.
+Scala 2.11 and 2.12 are supported as of version `0.4.4`.
 
 ## Install & Usage
 
 ```scala
 resolvers += "bintray-backline-open-source-releases" at "https://dl.bintray.com/backline/open-source"
 libraryDependencies ++= Seq(
-  "backline" %% "akka-http-metrics" % "0.4.3"
+  "backline" %% "akka-http-metrics" % "0.4.4"
 )
 ```
 

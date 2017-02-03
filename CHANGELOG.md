@@ -1,4 +1,4 @@
-### 0.4.4 (Unreleased)
+### 0.4.4 (Released 2017-02-03)
 
 - Bump akka-http to `10.0.3`
 
