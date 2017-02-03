@@ -1,6 +1,6 @@
 ### 0.5.0 (Unreleased)
 
-CHANGEs
+CHANGES
 
 `ResponseCodeMetrics` has been deprecated. A replacement of `StatusCodeMetrics` is recommended. This new interface does not require an `ExecutionContext` to be implicitly available. Thanks to [@notxcain](https://github.com/notxcain)
 
