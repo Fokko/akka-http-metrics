@@ -1,4 +1,4 @@
-### 0.5.0 (Unreleased)
+### 0.5.0 (Released 2017-02-03)
 
 CHANGES
 
