@@ -3,8 +3,6 @@ import akka.http.scaladsl.server.Directives
 import backline.http.metrics.RouteSpecification
 import com.codahale.metrics.MetricRegistry
 
-import scala.concurrent.ExecutionContext
-
 object StatusCodeMetricsSpec
     extends RouteSpecification
     with StatusCodeMetrics
