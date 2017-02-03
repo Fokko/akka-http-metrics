@@ -1,7 +1,5 @@
 package backline.http.metrics
-import com.codahale.metrics._
 import akka.http.scaladsl.server.{Directive0, RequestContext}
-import scala.util.control.NonFatal
 
 trait HttpTimerMetrics extends MetricsBase {
   def timerDirective: Directive0 =
