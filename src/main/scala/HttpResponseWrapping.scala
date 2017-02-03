@@ -9,7 +9,7 @@ import scala.util.control.NonFatal
 trait HttpResponseWrapping {
   this: MetricsBase =>
 
-  protected def responseCodes(nameFunc: RequestContext => String): Directive0 = {
+  protected[metrics] def responseCodes(nameFunc: RequestContext => String): Directive0 = {
     extractExecutionContext.flatMap {
       implicit executionContext: ExecutionContext =>
         mapInnerRoute { inner => ctx =>
@@ -32,7 +32,7 @@ trait HttpResponseWrapping {
     }
   }
 
-  protected def liftStatusCode(code: StatusCode): String = code match {
+  protected[metrics] def liftStatusCode(code: StatusCode): String = code match {
     case c: StatusCodes.Informational => "1xx"
     case c: StatusCodes.Success => "2xx"
     case c: StatusCodes.Redirection => "3xx"
