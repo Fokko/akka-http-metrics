@@ -6,7 +6,7 @@ import com.codahale.metrics.MetricRegistry
 
 object StatusCodeMetricsSpec
     extends RouteSpecification
-    with StatusCodeMetrics
+    with StatusCodeCounterDirectives
     with Directives {
   val metricRegistry = new MetricRegistry()
 
