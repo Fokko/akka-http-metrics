@@ -8,7 +8,7 @@ import scala.util.control.NonFatal
 
 //TODO: In 0.7.0 remove `StatusCodeMetrics` and move this to `StatusCodeCounterDirectives`
 
-trait HttpResponseWrapping { this: MetricsBase =>
+trait StatusCodeCounterCommon { this: MetricsBase =>
 
   protected[metrics] def responseCodes(
       nameFunc: RequestContext => String): Directive0 = {

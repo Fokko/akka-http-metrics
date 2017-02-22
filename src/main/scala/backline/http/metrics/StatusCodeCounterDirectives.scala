@@ -4,7 +4,7 @@ import akka.http.scaladsl.server.Directive0
 
 trait StatusCodeCounterDirectives
     extends MetricsBase
-    with HttpResponseWrapping {
+    with StatusCodeCounterCommon {
 
   def withStatusCodeCounter: Directive0 =
     responseCodes(ctx => getMetricName(ctx))
