@@ -1,3 +1,13 @@
+### 0.6.0 (Released 2017-02-22)
+
+CHANGES
+
+We've deprecated some traits and re-created them over to names that are closer to akka-http's naming.
+
+- Deprecated `HttpMeterMetrics` in favor of `MeterDirectives`
+- Deprecated `HttpTimerMetrics` in favor of `TimerDirectives`
+- Deprecated `StatusCodeMetrics` in favor of `StatusCodeCounterDirectives`
+
 ### 0.5.0 (Released 2017-02-03)
 
 CHANGES
