@@ -1,3 +1,9 @@
+### 0.7.0 (Unreleased)
+
+BREAKING CHANGES
+
+- The deprecations announced in 0.6.0 have been removed.
+
 ### 0.6.0 (Released 2017-02-22)
 
 CHANGES
