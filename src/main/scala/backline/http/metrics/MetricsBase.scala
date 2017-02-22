@@ -1,26 +1,31 @@
 package backline.http.metrics
-import com.codahale.metrics.{Counter, Metric, Meter, MetricFilter, MetricRegistry, Timer}
+
 import java.util.Iterator
-import akka.actor.Status.Failure
-import akka.http.scaladsl.server.{Directive0, RequestContext}
+
+import akka.http.scaladsl.server.RequestContext
 import akka.http.scaladsl.server.directives.BasicDirectives
-import scala.util.control.NonFatal
+import com.codahale.metrics._
 
 trait MetricsBase extends BasicDirectives {
   def metricRegistry: MetricRegistry
 
   protected def findAndRegisterTimer(name: String): Timer = {
-    val found = metricRegistry.getTimers(new NameBasedMetricFilter(name)).values.iterator
+    val found =
+      metricRegistry.getTimers(new NameBasedMetricFilter(name)).values.iterator
     findAndRegisterMetric(name, new Timer(), found)
   }
 
   protected def findAndRegisterCounter(name: String): Counter = {
-    val found = metricRegistry.getCounters(new NameBasedMetricFilter(name)).values.iterator
+    val found = metricRegistry
+      .getCounters(new NameBasedMetricFilter(name))
+      .values
+      .iterator
     findAndRegisterMetric(name, new Counter(), found)
   }
 
   protected def findAndRegisterMeter(name: String): Meter = {
-    val found = metricRegistry.getMeters(new NameBasedMetricFilter(name)).values.iterator
+    val found =
+      metricRegistry.getMeters(new NameBasedMetricFilter(name)).values.iterator
     findAndRegisterMetric(name, new Meter(), found)
   }
 
@@ -30,7 +35,10 @@ trait MetricsBase extends BasicDirectives {
     s"${routeName}.${methodName}"
   }
 
-  private[this] def findAndRegisterMetric[T <: Metric](name: String, metric: => T, found: Iterator[T]): T = {
+  private[this] def findAndRegisterMetric[T <: Metric](
+      name: String,
+      metric: => T,
+      found: Iterator[T]): T = {
     val m = metric
     try {
       if (found != null && found.hasNext()) {
@@ -39,11 +47,14 @@ trait MetricsBase extends BasicDirectives {
         metricRegistry.register(name, m)
       }
     } catch {
-      case err: IllegalArgumentException if err.getMessage.contains("A metric named") => m
+      case err: IllegalArgumentException
+          if err.getMessage.contains("A metric named") =>
+        m
     }
   }
 
   protected class NameBasedMetricFilter(needle: String) extends MetricFilter {
-    def matches(name: String, metric: Metric): Boolean = name equalsIgnoreCase needle
+    def matches(name: String, metric: Metric): Boolean =
+      name equalsIgnoreCase needle
   }
 }

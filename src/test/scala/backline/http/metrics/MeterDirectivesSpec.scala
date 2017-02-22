@@ -1,15 +1,20 @@
 package backline.http.metrics
-import akka.http.scaladsl.server.Directives
+
 import akka.http.scaladsl.model.StatusCodes
+import akka.http.scaladsl.server.Directives
 import com.codahale.metrics.MetricRegistry
+
 import scala.concurrent.duration._
 
-object HttpMeterMetricsSpec extends RouteSpecification with HttpMeterMetrics with Directives {
+object MeterDirectivesSpec
+    extends RouteSpecification
+    with MeterDirectives
+    with Directives {
   val metricRegistry = new MetricRegistry()
 
   "record rates for /ping" in {
     def routes =
-      meterDirective {
+      withMeter {
         (get & path("ping")) {
           complete("pong")
         }
@@ -31,7 +36,7 @@ object HttpMeterMetricsSpec extends RouteSpecification with HttpMeterMetrics wit
 
   "work with custom names" in {
     def routes =
-      meterDirectiveWithName("ping-route") {
+      withMeterNamed("ping-route") {
         (get & path("ping")) {
           complete("pong")
         }
