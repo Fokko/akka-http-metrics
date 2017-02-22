@@ -1,16 +1,13 @@
 package backline.http.metrics
+
 import akka.http.scaladsl.server.{Directive0, RequestContext}
 
 import scala.util.control.NonFatal
 
-trait HttpMeterMetrics extends MetricsBase {
-  def meterDirective: Directive0 =
-    meter(ctx => getMetricName(ctx))
+// TODO: Remove in 0.7.0 along with `HttpMeterMetrics`
 
-  def meterDirectiveWithName(name: String): Directive0 =
-    meter(_ => name)
-
-  private[this] def meter(nameFunc: RequestContext => String): Directive0 = {
+trait MeterCommon { self: MetricsBase =>
+  private[metrics] def meter(nameFunc: RequestContext => String): Directive0 = {
     mapInnerRoute { inner => ctx =>
       findAndRegisterMeter(nameFunc(ctx)).mark
       try {
