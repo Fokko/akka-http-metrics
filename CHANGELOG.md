@@ -1,4 +1,4 @@
-### 0.7.0 (Unreleased)
+### 1.0.0 (Released 2017-05-08)
 
 BREAKING CHANGES
 
