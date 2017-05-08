@@ -4,6 +4,18 @@ BREAKING CHANGES
 
 - The deprecations announced in 0.6.0 have been removed.
 
+### 0.6.2 (Released 2017-05-08)
+
+BUGS
+
+- `ResposneCodeMetrics` was accidently removed.
+
+### 0.6.1 (Released 2017-05-04)
+
+UPGRADES
+
+- Bumped akka-http to 10.0.6
+
 ### 0.6.0 (Released 2017-02-22)
 
 CHANGES
