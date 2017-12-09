@@ -6,11 +6,11 @@ organization := "backline"
 
 version := "1.0.0"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.11.11"
 
-crossScalaVersions := Seq(scalaVersion.value, "2.12.1")
+crossScalaVersions := Seq(scalaVersion.value, "2.12.4")
 
-val akkaVersion = "10.0.6"
+val akkaVersion = "10.0.11"
 
 resolvers ++= Seq(
   "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
