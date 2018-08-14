@@ -21,7 +21,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-core" % akkaVersion,
   "com.typesafe.akka" %% "akka-http" % akkaVersion,
   // Tests
-  "org.specs2" %% "specs2-core" % "3.8.6" % "test",
+  "org.specs2" %% "specs2-core" % "4.3.3" % "test",
   "com.typesafe.akka" %% "akka-http-testkit" % akkaVersion % "test"
 )
 
