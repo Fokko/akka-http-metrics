@@ -5,7 +5,7 @@ organization := "backline"
 
 version := "1.0.0"
 
-val akkaVersion = "10.0.6"
+val akkaVersion = "10.1.3"
 
 libraryDependencies ++= Seq(
   "io.dropwizard.metrics" % "metrics-core" % "3.1.2",
