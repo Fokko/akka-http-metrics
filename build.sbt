@@ -8,7 +8,7 @@ version := "1.0.0"
 val akkaVersion = "10.0.6"
 
 libraryDependencies ++= Seq(
-  "io.dropwizard.metrics" % "metrics-core" % "3.1.2",
+  "io.dropwizard.metrics" % "metrics-core" % "3.2.6",
   "com.typesafe.akka" %% "akka-http-core" % akkaVersion,
   "com.typesafe.akka" %% "akka-http" % akkaVersion,
   // Tests

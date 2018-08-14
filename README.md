@@ -5,7 +5,7 @@
 Current versions:
 
 - `akka-http-*`: `10.0.3` - [Project](https://github.com/akka/akka-http)
-- `metrics-core`: `3.1.2` - [Project](https://github.com/dropwizard/metrics)
+- `metrics-core`: `3.2.6` - [Project](https://github.com/dropwizard/metrics)
 
 Scala 2.11 and 2.12 are supported as of version `1.0.0`.
 
